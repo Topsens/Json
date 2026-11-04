@@ -315,6 +315,11 @@ public:
         return this->nul;
     }
 
+    virtual bool IsArr() const
+    {
+        return false;
+    }
+
     virtual bool IsObj() const
     {
         return false;
@@ -623,6 +628,11 @@ public:
     JType Type() const override
     {
         return JType::ARR;
+    }
+
+    bool IsArr() const override
+    {
+        return true;
     }
 };
 
@@ -941,6 +951,11 @@ public:
         {
             return this->und;
         }
+    }
+
+    bool IsArr() const override
+    {
+        return JType::ARR == this->subtype;
     }
 
     bool IsObj() const override
