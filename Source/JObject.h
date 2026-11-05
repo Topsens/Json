@@ -1197,6 +1197,27 @@ public:
         return this->ToObj(obj, err);
     }
 
+    template<typename T>
+    JArr<T> ToArr() const
+    {
+        JArr<T> arr;
+        if (!this->ToArr(arr))
+        {
+            arr.Clear();
+        }
+        return arr;
+    }
+    template<typename T>
+    T ToObj() const
+    {
+        T obj;
+        if (!this->ToObj(obj))
+        {
+            obj.Clear();
+        }
+        return obj;
+    }
+
     void ForEach(const std::function<void(const std::string&, const JVariant&)>& cb) const override
     {
         if (JType::OBJ == this->subtype && cb)

@@ -213,6 +213,11 @@ bool ToArr()
         return false;
     }
 
+    if (jvar.Serialize() != jvar.ToArr<JInt>().Serialize())
+    {
+        return false;
+    }
+
     for (int64_t i = 0; i < 3; i++)
     {
         if (i != ints[i])
@@ -288,6 +293,11 @@ bool ToObj()
 
     auto& inner = jouter.inner;
     if (!inner.str.HasValue() || "123" != inner.str())
+    {
+        return false;
+    }
+
+    if (jvar.Serialize() != jvar.ToObj<JOuter>().Serialize())
     {
         return false;
     }
