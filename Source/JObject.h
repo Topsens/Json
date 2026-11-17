@@ -577,8 +577,10 @@ class JStr : public JValue<std::string, JStr, JType::STR>
 {
 public:
     JVALUE(std::string, JStr, JType::STR);
+    JStr(const JStr& other) = default;
     JStr(JStr&& other) noexcept { *this = std::move(other); }
 
+    JStr& operator=(const JStr& other) = default;
     JStr& operator=(JStr&& other) noexcept
     {
         this->nul = other.nul;
