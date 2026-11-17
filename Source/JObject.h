@@ -843,12 +843,15 @@ class JArr : public JArray
 
 public:
     JArr() {}
+    JArr(const JArr& other) = default;
     JArr(JArr&& other) noexcept { *this = std::move(other); }
     JArr(const std::initializer_list<T>& list) : Value(list)
     {
         this->nul = false;
         this->und = false;
     }
+
+    JArr& operator=(const JArr& other) = default;
 
     JArr& operator=(JArr&& other) noexcept
     {
